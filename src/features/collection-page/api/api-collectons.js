@@ -36,3 +36,16 @@ export async function getDataById(id) {
     return null;
   }
 }
+
+export async function updateCollection(id, data) {
+  try {
+    const response = await axios.put(`${BASE_URL_PROMPT_API}/${id}`, data);
+    if (response.status === 200) {
+      alert("Data successfully updated.");
+    }
+    return response.data;
+  } catch (error) {
+    console.error("Error updating data:", error);
+    throw new Error("Failed to update data.");
+  }
+}
