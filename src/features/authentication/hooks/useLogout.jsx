@@ -8,7 +8,6 @@ export default function useLogout() {
   function handleLogout() {
     clearUser();
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
     navigate("/");
   }
 
