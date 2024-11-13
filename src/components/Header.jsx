@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import Button from './Button.jsx';
+import useUser from '../store/userStore.js';
+import useLogout from '../features/authentication/hooks/useLogout.jsx';
 
 const navLinks = [
   { label: 'Home', href: '#' },
@@ -9,6 +11,8 @@ const navLinks = [
 ];
 
 const Header = () => {
+  const { user } = useUser();
+  const {handleLogout} = useLogout();
 
   return (
     <nav className="bg-primary fixed w-full z-20 top-0 start-0 border-b-2 border-gray text-white">
@@ -18,9 +22,13 @@ const Header = () => {
           <span className="self-center text-2xl font-semibold whitespace-nowrap">GreenTips</span>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <Link to="/register">
-            <Button variant="success">SignUp</Button>        
-          </Link>
+          {user ? (
+            <Button variant='success' onClick={handleLogout}>Logout</Button>
+          ) : (
+            <Link to="/register">
+              <Button variant="success">SignUp</Button>        
+            </Link>
+          )}
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
