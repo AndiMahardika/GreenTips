@@ -51,7 +51,6 @@ export default function useLogin() {
 
     const token = `token-${data.id}`;
     localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(data));
     setUser(data);
 
     navigate("/prompt");

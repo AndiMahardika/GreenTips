@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import backgroundImage from '../../../assets/bg_login.png';
+import Button from '../../../components/Button.jsx';
 
 export const AuthLayout = ({ children }) => {
   return (
@@ -12,7 +14,12 @@ export const AuthLayout = ({ children }) => {
             </div>
             <img src={backgroundImage} alt="background" className="absolute bottom-0 left-0 w-80" />
           </section>
-          <section className="flex items-center justify-center">{children}</section>
+          <section className="flex items-center justify-center relative">
+            <Link to="/" className="absolute top-2 left-2">
+              <Button variant="success">Back</Button>
+            </Link>
+            {children}
+          </section>
       </main>
   );
 };
