@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { BASE_URL_PROMPT_API } from '../../../constant/BASE_URL.js'
+import { updateCollection } from '../api/api-collectons.js'
 
 export default function useEditCollection() {
   const [title, setTitle] = useState("")
@@ -37,18 +38,15 @@ export default function useEditCollection() {
       processSteps,
       notes,
     };
+
+    const confirmation = window.confirm("Are you sure you want to update this data?");
+    if (!confirmation) {
+      return;
+    }
     
     setLoadingUpdate(true);
     try {
-      const confirmation = window.confirm("Are you sure you want to update this data?");
-      if (!confirmation) {
-        return;
-      }
-
-      const response = await axios.put(`${BASE_URL_PROMPT_API}/${id}`, data);
-      if (response.status === 200) {
-        alert("Data successfully updated.");
-      }
+      await updateCollection(id, data);
     } catch (error) {
       console.error("Error updating data:", error);
     } finally {
