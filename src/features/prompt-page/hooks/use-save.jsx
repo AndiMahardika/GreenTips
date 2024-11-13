@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { saveToCollection } from "../api/api-tips.jsx";
 import useUser from "../../../store/userStore.js";
+import { showAlert } from "../../../components/Alert.jsx";
 
 export default function useSave(resultTips) {
   const { user } = useUser()
@@ -21,7 +22,7 @@ export default function useSave(resultTips) {
     }
   }, [resultTips]);
 
-  function handleSaveToCollection(event) {
+  async function handleSaveToCollection(event) {
     event.preventDefault();
 
     const data = {
@@ -32,7 +33,15 @@ export default function useSave(resultTips) {
       email: user.email
     };
 
-    saveToCollection(data, setLoadingSave);
+    setLoadingSave(true);
+    try {
+      await saveToCollection(data, setLoadingSave);
+    } catch (error) {
+      console.error("Error saving to collection:", error);
+      showAlert({ icon: 'error', title: 'Error', text: 'Failed to save data.' });
+    } finally {
+      setLoadingSave(false);
+    }
   }
 
   return {title, tools, processSteps, notes, loadingSave, setTitle, setTools, setProcessSteps, setNotes,handleSaveToCollection};

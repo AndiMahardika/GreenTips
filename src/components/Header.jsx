@@ -6,7 +6,7 @@ import useLogout from '../features/authentication/hooks/useLogout.jsx';
 const navLinks = [
   { label: 'Home', href: '#' },
   { label: 'About', href: '#about' },
-  { label: 'Services', href: '#' },
+  { label: 'Features', href: '#features' },
   { label: 'Contact', href: '#contact' },
 ];
 

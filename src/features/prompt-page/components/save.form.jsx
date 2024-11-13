@@ -2,12 +2,14 @@ import { useState } from 'react';
 import Button from '../../../components/Button.jsx'
 import Input from '../../../components/Input.jsx'
 
-export default function SaveForm({title, tools, processSteps, notes, handleSaveToCollection, loading, loadingSave}) {
+export default function SaveForm({title, tools, processSteps, notes, handleSaveToCollection, loadingSave}) {
 
   const [formTitle, setFormTitle] = useState(title);
   const [formTools, setFormTools] = useState(tools);
   const [formProcessSteps, setFormProcessSteps] = useState(processSteps);
   const [formNotes, setFormNotes] = useState(notes);
+
+  console.log(loadingSave)
 
   return (
     <form className="mt-3" method="post" onSubmit={handleSaveToCollection} noValidate>
@@ -18,7 +20,7 @@ export default function SaveForm({title, tools, processSteps, notes, handleSaveT
         placeholder="Title"
         value={formTitle}
         onChange={(e) => setFormTitle(e.target.value)}
-        disabled={loading}
+        disabled={loadingSave}
       />
       <Input
         id="tools"
@@ -26,7 +28,7 @@ export default function SaveForm({title, tools, processSteps, notes, handleSaveT
         placeholder="Tools"
         value={formTools}
         onChange={(e) => setFormTools(e.target.value)}
-        disabled={loading}
+        disabled={loadingSave}
       />
       <Input
         id="processSteps"
@@ -34,7 +36,7 @@ export default function SaveForm({title, tools, processSteps, notes, handleSaveT
         placeholder="Process Steps"
         value={formProcessSteps}
         onChange={(e) => setFormProcessSteps(e.target.value)}
-        disabled={loading}
+        disabled={loadingSave}
       />
       <Input
         id="notes"
@@ -42,10 +44,10 @@ export default function SaveForm({title, tools, processSteps, notes, handleSaveT
         placeholder="Notes"
         value={formNotes}
         onChange={(e) => setFormNotes(e.target.value)}
-        disabled={loading}
+        disabled={loadingSave}
       />
       </div>
-      <Button variant="success" type="submit" disabled={loading}>
+      <Button variant="success" type="submit" disabled={loadingSave}>
         {loadingSave ? "Saving..." : "Save to Collection"}
       </Button>
     </form>

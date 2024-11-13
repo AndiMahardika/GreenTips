@@ -42,7 +42,7 @@ export async function fetchTips(type, trash) {
       ],
     });
 
-    console.log(completion.choices[0].message.content);
+    // console.log(completion.choices[0].message.content);
     const response = JSON.parse(completion.choices[0].message.content);
     return response;
   } catch (error) {

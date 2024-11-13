@@ -58,7 +58,7 @@ export default function PromptPage() {
 
               {resultTips.title && (
                 // form save collection
-                <SaveForm title={title} tools={tools} processSteps={processSteps} notes={notes} handleSaveToCollection={handleSaveToCollection} loading={loadingSave} />
+                <SaveForm title={title} tools={tools} processSteps={processSteps} notes={notes} handleSaveToCollection={handleSaveToCollection} loadingSave={loadingSave} />
               )}
             </div>
           ) : 
