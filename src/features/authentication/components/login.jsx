@@ -3,9 +3,16 @@ import Button from "../../../components/Button.jsx";
 import Input from "../../../components/Input.jsx";
 import { AuthLayout } from "./auth.layout.jsx";
 import useLogin from "../hooks/useLogin.jsx";
+import useUser from "../../../store/userStore.js";
+import { Navigate } from "react-router-dom";
 
 export default function Login() {
   const { loading, error, errorEmail, errorPassword, handleLogin } = useLogin();
+  const {user} = useUser();
+
+  if(user) {
+    return <Navigate to="/prompt" />
+  }
 
   return (
     <div>

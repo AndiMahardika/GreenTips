@@ -54,7 +54,7 @@ export default function useLogin() {
     localStorage.setItem("user", JSON.stringify(data));
     setUser(data);
 
-    navigate("/");
+    navigate("/prompt");
   }
 
   return {loading, errorEmail, errorPassword, error, handleLogin};
