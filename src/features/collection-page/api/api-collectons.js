@@ -11,12 +11,9 @@ export async function fetchCollections() {
   }
 }
 
-export async function deleteCollection(id, title) {
+export async function deleteCollection(id) {
   try {
     const response = await axios.delete(`${BASE_URL_PROMPT_API}/${id}`);
-    if (response.status === 200) {
-      alert(`${title} deleted successfully`);
-    }
     return response.data;
   } catch (error) {
     console.error("Error deleting collection:", error);
@@ -40,9 +37,6 @@ export async function getDataById(id) {
 export async function updateCollection(id, data) {
   try {
     const response = await axios.put(`${BASE_URL_PROMPT_API}/${id}`, data);
-    if (response.status === 200) {
-      alert("Data successfully updated.");
-    }
     return response.data;
   } catch (error) {
     console.error("Error updating data:", error);

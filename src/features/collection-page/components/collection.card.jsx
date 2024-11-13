@@ -9,22 +9,28 @@ export default function CollectionCard({ id, title, tools, processSteps, notes, 
       {/* Tools */}
       <div className="md:col-span-3 bg-neutral border-gray border p-2 h-fit max-h-80">
         <p className="text-base text-white font-semibold">Tools :</p>
-        {tools.map((tool, index) => (
-          <p key={index} className="text-sm"> {index + 1}. {tool}</p>
+        { tools.length === 0 ? 
+          <p className="text-sm text-gray-400">No data available.</p> :
+          tools.map((tool, index) => (
+            <p key={index} className="text-sm"> {index + 1}. {tool}</p>
         ))}
       </div>
       {/* Process Steps */}
       <div className="md:col-span-5 bg-neutral border-gray border p-2 overflow-scroll h-fit md:max-h-80">
         <p className="text-base text-white font-semibold">Process Steps :</p>
-        {processSteps.map((step, index) => (
-          <p key={index} className="text-sm"> {index + 1}. {step}</p>
+        { processSteps.length === 0 ? 
+          <p className="text-sm text-gray-400">No data available.</p> :
+          processSteps.map((step, index) => (
+            <p key={index} className="text-sm"> {index + 1}. {step}</p>
         ))}
       </div>
       {/* Notes */}
       <div className="md:col-span-4 bg-neutral border-gray border p-2 overflow-scroll h-fit md:max-h-80">
         <p className="text-base text-white font-semibold">Notes :</p>
-        {notes.map((note, index) => (
-          <p key={index} className="text-sm"> {index + 1}. {note}</p>
+        { notes.length === 0 ? 
+          <p className="text-sm text-gray-400">No data available.</p> :
+          notes.map((note, index) => (
+            <p key={index} className="text-sm"> {index + 1}. {note}</p>
         ))}
       </div>
       {/* Action Buttons */}
