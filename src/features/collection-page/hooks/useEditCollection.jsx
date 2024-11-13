@@ -1,7 +1,7 @@
-import axios from 'axios'
 import { useState } from 'react'
-import { BASE_URL_PROMPT_API } from '../../../constant/BASE_URL.js'
 import { updateCollection } from '../api/api-collectons.js'
+import { showAlert } from '../../../components/Alert.jsx'
+import { confirmAlert } from '../../../components/Confirm.jsx'
 
 export default function useEditCollection() {
   const [title, setTitle] = useState("")
@@ -39,14 +39,23 @@ export default function useEditCollection() {
       notes,
     };
 
-    const confirmation = window.confirm("Are you sure you want to update this data?");
-    if (!confirmation) {
-      return;
-    }
+    const confirmation = await confirmAlert({
+      title: 'Are you sure?',
+      text: `Do you really want to update "${title}"?`,
+      confirmButtonText: 'Yes, update it!',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: 'bg-blue-600 hover:bg-blue-700',
+      cancelButtonColor: 'bg-red-600 hover:bg-red-700 ml-2',
+    });
+
+    if (!confirmation.isConfirmed) return;
     
     setLoadingUpdate(true);
     try {
-      await updateCollection(id, data);
+      const res = await updateCollection(id, data);
+      if (res) {
+        showAlert({ icon: 'success', title: 'Success', text: `"${title}" successfully Updated.` });
+      }
     } catch (error) {
       console.error("Error updating data:", error);
     } finally {

@@ -1,3 +1,4 @@
+import { showAlert } from "../../../components/Alert.jsx";
 import { BASE_URL_PROMPT_API } from "../../../constant/BASE_URL.js";
 import openai from "../../../utils/openai.js";
 import axios from "axios";
@@ -55,8 +56,8 @@ export async function saveToCollection(data, setLoadingSave) {
   setLoadingSave(true);
   try {
     const response = await axios.post(BASE_URL_PROMPT_API, data);
-    console.log("Data saved to collection:", response.data);
-    alert("Data saved to collection.");
+    // console.log("Data saved to collection:", response.data);
+    showAlert({ icon: 'success', title: 'Success', text: `"${data.title}" successfully saved.` });
   } catch (error) {
     console.error("Error saving to collection:", error);
     alert("Failed to save data.");
