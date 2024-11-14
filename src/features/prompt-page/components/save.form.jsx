@@ -9,8 +9,6 @@ export default function SaveForm({title, tools, processSteps, notes, handleSaveT
   const [formProcessSteps, setFormProcessSteps] = useState(processSteps);
   const [formNotes, setFormNotes] = useState(notes);
 
-  console.log(loadingSave)
-
   return (
     <form className="mt-3" method="post" onSubmit={handleSaveToCollection} noValidate>
       <div className="hidden">

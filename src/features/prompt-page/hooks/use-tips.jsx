@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchTips } from "../api/api-tips.jsx";
+import { fetchTips, fetchTipsGemini } from "../api/api-tips.jsx";
 
 export default function useTips() {
   const [type, setType] = useState('');
@@ -19,7 +19,7 @@ export default function useTips() {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await fetchTips(type, trash);
+      const response = await fetchTipsGemini(type, trash);
       setResultTips(response);
     } catch (error) {
       console.error("Error generating tips:", error);

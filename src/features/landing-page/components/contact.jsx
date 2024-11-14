@@ -4,7 +4,8 @@ import TextAreaInput from "../../../components/Textarea.jsx";
 
 export default function Contact() { 
   return (
-    <section className="bg-primary p-4 md:p-10 text-white" id="contact">
+    <div className="bg-primary">
+    <section className="container mx-auto px-4 md:px-0 py-3 md:py-16 text-white" id="contact">
       <h1 className="text-3xl md:text-4xl font-bold text-center">Contact Us</h1>
       <div className="grid md:grid-cols-2 md:gap-8">
         <div className="mt-3 md:mt-6">
@@ -33,5 +34,6 @@ export default function Contact() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
