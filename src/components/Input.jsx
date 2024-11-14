@@ -43,7 +43,11 @@ const Input = ({
 
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium mb-2">{label}</label>
+      {label && (
+        <label htmlFor={id} className="block text-sm font-medium mb-2">
+          {label}
+        </label>
+      )}
       <div className="relative">
         <input
           type={type}

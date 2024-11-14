@@ -17,6 +17,7 @@ export default function useTips() {
 
   async function handleGenerateTips(event) {
     event.preventDefault();
+    setResultTips({});
     setLoading(true);
     try {
       const response = await fetchTipsGemini(type, trash);
