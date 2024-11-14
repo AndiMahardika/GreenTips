@@ -1,6 +1,7 @@
 export default function About() {
   return (
-    <section className="bg-primary px-4 md:px-10 py-8 md:py-14 text-white" id="about">
+    <div className="bg-primary">
+    <section className="container mx-auto px-4 md:px-0 py-8 md:py-14 text-white" id="about">
       <h1 className="text-3xl md:text-4xl font-bold text-center">About Us</h1>
       <div className="md:space-y-4 space-y-2 mt-6">
         <p className="font-semibold text-lg md:text-xl">
@@ -24,5 +25,6 @@ export default function About() {
         </p>
       </div>
     </section>
+    </div>
   );
 }
