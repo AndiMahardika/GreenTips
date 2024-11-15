@@ -5,14 +5,22 @@ import { AuthLayout } from "./auth.layout.jsx";
 import useLogin from "../hooks/useLogin.jsx";
 import useUser from "../../../store/userStore.js";
 import { Navigate } from "react-router-dom";
+import viewEye from "../../../assets/view.png"
+import { useState } from "react";
+import hideEye from "../../../assets/hide.png"
 
 export default function Login() {
   const { loading, error, errorEmail, errorPassword, handleLogin } = useLogin();
   const {user} = useUser();
+  const [isHidePassword, setIsHidePassword] = useState(true);
 
   if(user) {
     return <Navigate to="/prompt" />
   }
+
+  const handleHidePassword = () => {
+    setIsHidePassword(!isHidePassword);
+  };
 
   return (
     <div>
@@ -25,7 +33,14 @@ export default function Login() {
           <form className="space-y-3" onSubmit={handleLogin} noValidate>
             <Input id="email" label="Email" type="email" placeholder="Email" />
             <p className="text-xs text-red-600">{errorEmail}</p>
-            <Input id="password" label="Password" type="password" placeholder="Password" />
+            <div className="relative">
+              <Input id="password" label="Password" type={isHidePassword ? "password" : "text"} placeholder="Password" />
+              <div className="absolute right-0 bottom-1">
+                <Button variant="" onClick={handleHidePassword}>
+                  {isHidePassword ? <img src={hideEye} alt="hide" className="w-5" /> : <img src={viewEye} alt="view" className="w-5" />}
+                </Button>
+              </div>
+            </div>
             <p className="text-xs text-red-600">{errorPassword}</p>
             <Button size="small" fullWidth type="submit" disabled={loading}>
               {loading ? "Loading..." : "Login"}

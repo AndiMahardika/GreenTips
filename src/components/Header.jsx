@@ -29,7 +29,7 @@ const Header = () => {
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           {user ? (
-            <Button variant="success" onClick={handleLogout}>Logout</Button>
+            <Button variant="danger" onClick={handleLogout}>Log Out</Button>
           ) : (
             <Link to="/register">
               <Button variant="success">SignUp</Button>
