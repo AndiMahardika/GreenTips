@@ -77,7 +77,7 @@ export default function Layout({ children }) {
             </ul>
           </div>
           
-          <Button variant="success" size="default" fullWidth onClick={handleLogout}>Log Out</Button>
+          <Button variant="danger" size="default" fullWidth onClick={handleLogout}>Log Out</Button>
         </div>
       </aside>
 
