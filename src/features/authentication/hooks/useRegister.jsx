@@ -19,6 +19,7 @@ export default function useRegister() {
     setErrorEmail('');
     setErrorPassword('');
     setError('');
+    setIsRegistered(false);
 
     const dataForm = new FormData(event.target);
     const name = dataForm.get("name");
