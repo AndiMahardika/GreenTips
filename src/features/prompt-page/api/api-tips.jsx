@@ -71,11 +71,11 @@ export async function saveToCollection(data, setLoadingSave) {
 // Gemini Ai
 export async function fetchTipsGemini(type, trash) {
   const generationConfig = {
-    "temperature": 1,
-    "top_p": 0.95,
-    "top_k": 40,
-    "max_output_tokens": 8192,
-    "response_mime_type": "text/plain",
+    "temperature": 1, // 1 respons kreatif dan bervariasi, 0 kurang variasi
+    "top_p": 0.95, //  hanya kata-kata yang memiliki peluang besar yang akan dipertimbangkan, sehingga hasilnya lebih relevan dan fokus.
+    "top_k": 40, //hanya 40 kata teratas yang akan dipertimbangkan. Ini membantu mengurangi kemungkinan kata-kata yang tidak relevan.
+    "max_output_tokens": 8192, // mengatur batas maksimum jumlah token yang dihasilkan dalam satu respons.
+    "response_mime_type": "text/plain", // Mengatur tipe format hasil keluaran menjadi teks biasa (text/plain).
   }
 
   try {
