@@ -14,7 +14,7 @@ GreenTips is an AI-powered platform designed to help users better understand and
 - **Zustand**: State management library.
 - **Zod**: Schema validation library for data validation.
 - **Mock API**: Simulated API for testing purposes.
-- **Generative AI: For generating waste management recommendations.
+- **Generative AI**: For generating waste management recommendations.
 - **SweetAlert2**: For displaying custom alerts.
 
 ## Installation
